@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Links index</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	{% load static %}
+  	<script src="{% static 'list.js' %}"></script>  
+  	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet"> 
+  	<link rel="stylesheet" href="{% static 'list.css' %}"> 
+</head>
+<body>
+	{% if request.user.is_authenticated%}
+		<h2><a href="{% url 'logout_api' %}">logout</a></h2>
+	{% else %}
+		<h2><a href="{% url 'login' %}">login</a></h2>
+	{% endif %}
+	<h2><a href="{% url 'create' %}">Generate new link:</a></h2>
+	<br>
+	<div id="div_list" style="display: inline-block">
+		<ul id="main_list">
+		</ul>
+</body>
+</html>
