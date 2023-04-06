@@ -3,18 +3,20 @@
 <head>
 	<title>Create new link</title>
 	{% load static %}
+	<link rel="stylesheet" href="{% static 'common.css' %}">
 	<link rel="stylesheet" href="{% static 'create_form.css' %}">
 </head>
 <body>
-	<div style="display: inline-block; padding: 5%">
-		<marquee> LINKI KROTKIE DOBRE </marquee>
+	<h3 class="light_title"> New link </h3>
+	<div id="main">
+		<marquee> Stwórz nowy link </marquee>
 		<form action="/api/new" method="POST">
 			{% csrf_token %}
 			<label>Url to shorten:</label>
 			<input type="text" name="url"> 
-			<label>url ending:</label>
+			<label>Url ending:</label>
 			<input type="text" name="token" maxlength="20">
-			<p style="font-size:75%">max 20, serwer nie sprawdza ale po prostu nie zadziala</p>
+			<p style="font-size:75%">(Max 20 chars)</p>
 
 			<button type="submit"> Make link </button>
 		</form>

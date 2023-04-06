@@ -15,9 +15,19 @@ class LoginForm(forms.Form):
 	uname = forms.CharField(label="Username", max_length=64)
 	password = forms.CharField(label="Password", max_length=64,widget=forms.PasswordInput)
 
+#register
+class RegisterForm(forms.Form):
+	uname = forms.CharField(label="Username", max_length=64)
+	email = forms.CharField(label="E-mail", max_length=64)
+	password = forms.CharField(label="Password", max_length=64,widget=forms.PasswordInput)
+
 def login(request):
 	form = LoginForm()
 	return render(request, 'login.html',{'login_form': form})
+
+def register(request):
+	form = RegisterForm()
+	return render(request, 'register.html',{'register_form': form})
 
 def redir(request):
 	fromurl = request.path[1:]

@@ -20,5 +20,7 @@ urlpatterns = [
 	path('links', views.list_links, name="list_view"), #pass http request to the views.index view function
 	path('new', views.generate_new),
 	path('login',views.login_api),
-	path('logout',views.logout_api, name="logout_api")
+	path('register',views.register_api),
+	path('logout',views.logout_api, name="logout_api"),
+	path('delete',views.delete_link, name="delete_link")
 ]

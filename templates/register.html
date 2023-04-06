@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
 <body>
-	<form method="POST" action="api/login">
+	<form method="POST" action="api/register">
 		{% csrf_token %}
-		{{login_form}}
+		{{register_form}}
 		<input type="submit" value="login">
 	</form>
 

@@ -9,17 +9,31 @@
   	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet"> 
   	<link rel="stylesheet" href="{% static 'list.css' %}"> 
+  	<link rel="stylesheet" href="{% static 'common.css' %}"> 
 </head>
 <body>
 	{% if request.user.is_authenticated%}
+		<p class="username_text">Logged in as {{ request.user.username }}</p>
 		<h2><a href="{% url 'logout_api' %}">logout</a></h2>
+		<h2><a href="{% url 'create' %}">Generate new link</a></h2>
 	{% else %}
 		<h2><a href="{% url 'login' %}">login</a></h2>
+		<h2><a href="{% url 'register' %}">register</a></h2>
 	{% endif %}
-	<h2><a href="{% url 'create' %}">Generate new link:</a></h2>
 	<br>
-	<div id="div_list" style="display: inline-block">
-		<ul id="main_list">
-		</ul>
+	<main class=main>
+		{% if request.user.is_authenticated%}
+			<h3 class="light_title"> Existing links
+			{% if user.is_superuser %}
+			<span> (superuser view) </span>
+			{% endif %}
+			</h3>
+			<div id="div_list" style="display: inline-block"><ul id="main_list"></ul></div>
+		{% else %}
+			<h3 class="light_title"> Login to see your links </h3>
+		{% endif %}
+	</main>
+
+	<input type=hidden id="csrftoken" value="{{ csrf_token }}"/></input>
 </body>
 </html>
